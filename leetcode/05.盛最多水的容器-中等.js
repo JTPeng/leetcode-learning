@@ -25,7 +25,7 @@ var maxArea = function (height) {
     if (height[L] > maxHeight || height[R] > maxHeight) return ''
     var area = Math.min(height[R], height[L]) * (R - L)
     result = Math.max(area, result)
-    // 右大于左 移左指针
+    // 右大于左 移左指针 那边的值小就移动那个指针
     if (height[R] >= height[L]) {
       L++
     } else {

@@ -15,3 +15,13 @@ var moveZeroes = function (nums, l = 0, r = -1) {
   while (r++ < nums.length)
     if (nums[r]) nums[l] === 0 && ([nums[l], nums[r]] = [nums[r], nums[l]]), l++
 }
+var moveZeroes = function (nums) {
+  var j = 0
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      ;[nums[i], nums[j]] = [nums[j], nums[i]]
+      j++
+    }
+  }
+}
+moveZeroes([1, 3, 0, 15, 0, 12])
