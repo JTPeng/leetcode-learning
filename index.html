@@ -9,30 +9,28 @@
 
 <body>
   <script>
-    function intToRoman(num) {
-      const map = {
-        M: 1000,
-        CM: 900,
-        D: 500,
-        CD: 400,
-        C: 100,
-        XC: 90,
-        L: 50,
-        XL: 40,
-        X: 10,
-        IX: 9,
-        V: 5,
-        IV: 4,
-        I: 1,
+    var strStr = function (haystack, needle) {
+      if (!needle) return 0
+      let L = 0
+      let R = L + needle.length
+      var getStr = (left, right) => {
+        var res = ''
+        while (left < right) {
+          res += haystack[left]
+          left++
+        }
+        return res
       }
-      let result = ''
-      Object.entries(map).forEach(([letter, n]) => {
-        result += letter.repeat(Math.floor(num / n))
-        num %= n
-      })
-      return result
-    }
-    console.log(intToRoman(1994))
+      while (L < R && R <= haystack.length) {
+        if (getStr(L, R) === needle) {
+          return L
+        }
+        L++
+        R++
+      }
+      return -1
+    };
+    console.log(strStr('hello', 'll'))
   </script>
 </body>
 
