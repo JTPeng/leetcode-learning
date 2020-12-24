@@ -9,28 +9,27 @@
 
 <body>
   <script>
-    var strStr = function (haystack, needle) {
-      if (!needle) return 0
-      let L = 0
-      let R = L + needle.length
-      var getStr = (left, right) => {
-        var res = ''
-        while (left < right) {
-          res += haystack[left]
-          left++
+    var searchInsert = function (nums, target) {
+      let start = 0;
+      let end = nums.length - 1;
+      while (start <= end) {
+        const middle = Math.floor((end + start) / 2);
+        if (nums[middle] === target) {
+          return middle;
         }
-        return res
-      }
-      while (L < R && R <= haystack.length) {
-        if (getStr(L, R) === needle) {
-          return L
+        if (nums[middle] < target) {
+          start = middle + 1
+          continue;
         }
-        L++
-        R++
+        if (nums[middle] > target) {
+          end = middle - 1;
+          continue;
+        }
+        return middle;
       }
-      return -1
+      return start;
     };
-    console.log(strStr('hello', 'll'))
+    console.log(searchInsert([1, 3, 5, 6], 7))
   </script>
 </body>
 
