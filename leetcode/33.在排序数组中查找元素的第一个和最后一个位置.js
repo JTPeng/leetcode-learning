@@ -12,3 +12,21 @@
  * 输入：nums = [], target = 0
  * 输出：[-1,-1]
  */
+//
+var searchRange = function (nums, target) {
+  if (nums.length === 0) return [-1, -1]
+  var left = 0
+  var right = nums.length - 1
+  var result = []
+  while (left <= right) {
+    if (nums[left] === target) result.push(left)
+    if (nums[right] === target) result.push(right)
+    left++
+    right--
+  }
+  if (result.length === 0) {
+    return [-1, -1]
+  }
+  result.sort((a, b) => a - b)
+  return [result[0], result[result.length - 1]]
+}
