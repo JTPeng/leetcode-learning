@@ -9,24 +9,24 @@
 
 <body>
   <script>
-    var searchRange = function (nums, target) {
-      if (nums.length === 0) return [-1, -1]
-      var left = 0
-      var right = nums.length - 1
-      var result = []
-      while (left <= right) {
-        if (nums[left] === target) result.push(left)
-        if (nums[right] === target) result.push(right)
-        left++
-        right--
+    /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+    var singleNumber = function (nums) {
+      var countObj = {}
+      for (const key of nums) {
+        if (countObj.hasOwnProperty(key)) {
+          countObj[key] = 1
+          continue
+        }
+        countObj[key] = 0
       }
-      if (result.length === 0) {
-        return [-1, -1]
+      for (const j in countObj) {
+        if (countObj[j] === 0) return j
       }
-      result.sort((a, b) => a - b)
-      return [result[0], result[result.length - 1]]
     };
-    console.log(searchRange([1], 1))
+    console.log(singleNumber([4, 1, 2, 1, 2]))
   </script>
 </body>
 
