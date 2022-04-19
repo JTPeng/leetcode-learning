@@ -9,13 +9,48 @@
  * 1.将相减结果下标保存到对象中,下一次相见时对象含有该值则结束循环
  */
 var twoSum = function (nums, target) {
-  var obj = {}
-  for (let i = 0; i < nums.length; i++) {
-    const num = target - nums[i]
-    if (obj.hasOwnProperty(num)) {
-      return [i, obj[num]]
-    }
-    obj[nums[i]] = i
-  }
-  return null
+	var obj = {}
+	for (let i = 0; i < nums.length; i++) {
+		const num = target - nums[i]
+		if (obj.hasOwnProperty(num)) {
+			return [i, obj[num]]
+		}
+		obj[nums[i]] = i
+	}
+	return null
+}
+
+// 快慢指针实现
+var twoSum = function (nums, target) {
+	var length = nums.length
+	var left = 0
+	var right = length - 1
+	while (left < right) {
+		if (nums[left] + nums[right] === target) {
+			return [left, right]
+		}
+		right--
+		if (left === right) {
+			left++
+			right = length - 1
+		}
+	}
+}
+
+/**
+ * 哈希值
+ * @param {*} nums
+ * @param {*} target
+ * @returns
+ */
+var twoSum = function (nums, target) {
+	var map = {}
+	for (let i = 0; i < nums.length; i++) {
+		const num = target - nums[i]
+		if (map.hasOwnProperty(num)) {
+			return [map[num], i]
+		}
+		map[nums[i]] = i
+	}
+	return null
 }
